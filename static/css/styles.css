@@ -268,6 +268,121 @@ h1 {
     margin: 0;
 }
 
+.messages {
+    width: min(1120px, calc(100% - 32px));
+    margin: 18px auto 0;
+}
+
+.messages p {
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid rgba(18, 110, 102, 0.2);
+    border-radius: 6px;
+    background: #eaf3ef;
+    color: var(--accent-dark);
+    font-weight: 700;
+}
+
+.auth-page {
+    min-height: 100vh;
+    background:
+        linear-gradient(135deg, rgba(18, 110, 102, 0.14), transparent 45%),
+        var(--bg);
+}
+
+.auth-shell {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 32px 16px;
+}
+
+.auth-panel {
+    width: min(460px, 100%);
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+    box-shadow: 0 24px 70px rgba(23, 33, 31, 0.12);
+}
+
+.auth-panel h1 {
+    margin-bottom: 24px;
+    font-size: 38px;
+    line-height: 1.1;
+}
+
+.back-link,
+.auth-switch a {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.back-link {
+    display: inline-flex;
+    margin-bottom: 28px;
+}
+
+.auth-form {
+    display: grid;
+    gap: 10px;
+}
+
+.auth-form label {
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.auth-form input {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    font: inherit;
+}
+
+.auth-form input:focus {
+    border-color: var(--accent);
+    outline: 3px solid rgba(18, 110, 102, 0.14);
+}
+
+.auth-form .button {
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.help-text {
+    margin: -4px 0 8px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.help-text ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+}
+
+.field-error {
+    margin: -4px 0 8px;
+    color: #a33124;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.auth-switch {
+    margin: 20px 0 0;
+    color: var(--muted);
+}
+
+.auth-messages {
+    width: 100%;
+    margin: 0 0 18px;
+}
+
 @media (max-width: 760px) {
     .nav-toggle {
         display: block;
@@ -308,5 +423,9 @@ h1 {
     .contact {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .auth-panel {
+        padding: 24px;
     }
 }

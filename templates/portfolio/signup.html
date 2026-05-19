@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="auth-page">
+    <main class="auth-shell">
+        <section class="auth-panel">
+            <a class="back-link" href="{% url 'home' %}">Back to portfolio</a>
+            <p class="eyebrow">Signup</p>
+            <h1>Create account</h1>
+
+            <form method="post" class="auth-form">
+                {% csrf_token %}
+                {% for field in form %}
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <p class="help-text">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                    {% if field.errors %}
+                        <p class="field-error">{{ field.errors|striptags }}</p>
+                    {% endif %}
+                {% endfor %}
+                <button class="button primary" type="submit">Create Account</button>
+            </form>
+
+            <p class="auth-switch">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </section>
+    </main>
+</body>
+</html>
