@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile.name }} | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="#home" class="logo">{{ profile.name }}</a>
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">{{ profile.location }}</p>
+                <h1>{{ profile.name }}</h1>
+                <h2>{{ profile.role }}</h2>
+                <p>{{ profile.summary }}</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="#projects">View Projects</a>
+                    <a class="button secondary" href="mailto:{{ profile.email }}">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">About</p>
+                <h2>Simple, useful websites with a clean backend.</h2>
+            </div>
+            <p class="large-text">
+                This portfolio is built with Django on the backend and classic HTML, CSS,
+                and JavaScript on the frontend. Replace this text with your own story,
+                experience, education, or services.
+            </p>
+        </section>
+
+        <section id="skills" class="section tinted">
+            <div class="section-heading">
+                <p class="eyebrow">Skills</p>
+                <h2>Technologies I use</h2>
+            </div>
+            <div class="skill-list">
+                {% for skill in skills %}
+                    <span>{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">Projects</p>
+                <h2>Selected work</h2>
+            </div>
+            <div class="project-grid">
+                {% for project in projects %}
+                    <article class="project-card">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <div class="tag-row">
+                            {% for tag in project.tags %}
+                                <span>{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div>
+                <p class="eyebrow">Contact</p>
+                <h2>Have a project in mind?</h2>
+                <p>Send a message and let us build something sharp and useful.</p>
+            </div>
+            <a class="button primary" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> {{ profile.name }}. Built with Django.</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
